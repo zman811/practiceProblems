@@ -29,10 +29,10 @@ const isValid = function (s) {
   let storage = [];
   for (let i = 0; i < s.length; i++) {
     if (s[i] === "]" || s[i] === "}" || s[i] === ")") {
-      if (!(solutions[storage[0]] === s[i])) {
+      if (!(solutions[storage[storage.length - 1]] === s[i])) {
         return false;
       } else {
-        storage.shift();
+        storage.pop();
       }
     } else {
       storage.push(s[i]);
@@ -43,4 +43,4 @@ const isValid = function (s) {
 
 console.log("true", isValid("()[]{}"));
 console.log("false", isValid("()[{}"));
-console.log("true", isValid("()[[]]{}"));
+console.log("true", isValid("({[()]})[[]]{}"));
