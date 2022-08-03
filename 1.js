@@ -34,15 +34,15 @@ const twoSum = (nums, target) => {
   // First way i could go about this is itterate through both arrays, while this would give me a solution it would be O(n^2) time complexity
   // Ill start with it this way then see if i can get a more effecient solution
   // * this is the slow but working solution
-  for(let i = 0; i < nums.length; i++) {
-    for(let j = 0; j < nums.length; j++) {
-      if(nums[i] + nums[j] === target && i !== j) {
-        return [i, j]
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 0; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target && i !== j) {
+        return [i, j];
       }
     }
   }
   // * add in another faster solution below
 };
 
-const test = twoSum([3,3], 6)
-console.log(test)
+const test = twoSum([3, 3], 6);
+console.log(test);
