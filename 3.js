@@ -51,7 +51,7 @@ var mergeTwoLists = function (list1, list2) {
   //let newList = list1.val < list2.val ? list1 : list2;
 
   while (current1.next !== null || current2.next !== null) {
-    if (current1.val > current2.val) {
+    if (current1.val > current2.val || current1.next || !current2.next) {
       newList.next = current2;
       current2 = current2.next;
     } else {
