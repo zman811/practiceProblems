@@ -26,6 +26,24 @@ Follow up: What if the inputs contain Unicode characters? How would you adapt yo
  * @return {boolean}
  */
 const isAnagram = function (s, t) {
+  let one = s.split("");
+  let two = t.split("");
+  if (s.length !== t.length) {
+    return false;
+  }
+  for (let i = 0; i < one.length; i++) {
+    let index = two.indexOf(one[i]);
+    if (index === -1) {
+      return false;
+    } else {
+      two.splice(index, 1, "");
+    }
+  }
+  return true;
+  // Change them to arrays first
   // itterate throught string s, for each letter check if it is contanied in string t,
   // if its not return false. If it is remove it and keep going if we get to the end we will return true
 };
+
+console.log(isAnagram("anagram", "nagaram"));
+console.log(isAnagram("car", "rat"));
