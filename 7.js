@@ -25,4 +25,7 @@ Follow up: What if the inputs contain Unicode characters? How would you adapt yo
  * @param {string} t
  * @return {boolean}
  */
-const isAnagram = function (s, t) {};
+const isAnagram = function (s, t) {
+  // itterate throught string s, for each letter check if it is contanied in string t,
+  // if its not return false. If it is remove it and keep going if we get to the end we will return true
+};
