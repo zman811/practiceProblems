@@ -30,8 +30,48 @@ n == image[i].length
  * @param {number} color
  * @return {number[][]}
  */
-var floodFill = function(image, sr, sc, color) {
+var floodFill = function (image, sr, sc, color) {
   // First we want to check if the first spot is already the color of new one, if it we do nothing
+  const first = image[sr][sc]; // this is the orignal one we will store to check later
+  if (first === color) {
+    return image; // Return if there is nothing to change
+  }
+  const recurse = (row, col) => {
+    image[row][col] = color;
+    console.log(image)
+    if(image[row + 1]) {
+      if (image[row + 1][col] === first) {
+        recurse(row + 1, col);
+      }
+    }
+    if(image[row - 1]) {
+      if (image[row - 1][col] === first) {
+        recurse(row - 1, col);
+      }
+    }
+    if (image[row][col + 1] === first) {
+      recurse(row, col + 1);
+    }
+    if (image[row][col - 1] === first) {
+      recurse(row, col + 1);
+    }
+    //check all suroding squares
+  };
+  recurse(sr, sc);
+  return image;
   // If its not we will change that one then itterate 4 times checking all ones next to it
   //   if any of them are the same as the origanal one then we recursivly call on that one so that each one gets checked
 };
+
+console.log('test',
+  floodFill(
+    [
+      [1, 1, 1],
+      [1, 1, 0],
+      [1, 0, 1],
+    ],
+    1,
+    1,
+    2
+  )
+);
