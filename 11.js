@@ -39,16 +39,27 @@ p and q will exist in the BST.
 @param {TreeNode} q
 @return {TreeNode}
 */
-var lowestCommonAncestor = function(root, p, q) {
+const lowestCommonAncestor = (root, p, q) => {
   // itterate through one and keep track of all the parents then compare the other till match is found
-  let par = []
-  let curr = root
-  while(curr.val !== root.val) {
-    par.push(curr)
-    if(curr < root) {
-      curr = curr.left
+  // let par = []
+  // let curr = root
+  // while(curr.val !== root.val) {
+  //   par.push(curr)
+  //   if(curr < root) {
+  //     curr = curr.left
+  //   } else {
+  //     curr = curr.right
+  //   }
+  // }
+
+  // go down the tree till the are both not less than or greater than the current node
+  let current = root;
+  while ((p < current && q < current) || (p > current && q > current)) {
+    if (p < current) {
+      current = current.left;
     } else {
-      curr = curr.right
+      current = current.right;
     }
   }
+  return current;
 };
