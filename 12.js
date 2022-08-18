@@ -37,13 +37,40 @@ The number of nodes in the tree is in the range [0, 5000].
 @param {TreeNode} root
 @return {boolean}
  */
-const isBalanced = function(root) {
+const isBalanced = function (root) {
+  if (root === null) return true;
+  let flag = true;
+  function helper(root) {
+    //base case of recursion - tree with no nodes return height 0
+    if (root.left === null && root.right === null) {
+      return 0;
+    }
+    let leftHeight = 0,
+      rightHeight = 0;
+    if (root.left !== null) {
+      //height of left subtree is one plus the height of child sub tree
+      leftHeight = 1 + helper(root.left);
+    }
+    if (root.right !== null) {
+      //height of right subtree is one plus the height of child sub tree
+      rightHeight = 1 + helper(root.right);
+    }
+    let actualHeight = Math.max(leftHeight, rightHeight);
+
+    if (Math.abs(leftHeight - rightHeight) > 1) flag = false;
+
+    return actualHeight;
+  }
+
+  helper(root);
+
+  return flag;
   // Check the depth of the tree on left and right
   // if one is 2 higher than the other than return false, else return true
-  let leftDepth = 1;
-  let rightDepth = 1;
-  let currentRight = root.right;
-  while(currentRight.left || currentRight.left) {
-    // need to change to recursion i think
-  }
+  // let leftDepth = 1;
+  // let rightDepth = 1;
+  // let currentRight = root.right;
+  // while(currentRight.left || currentRight.left) {
+  //   // need to change to recursion i think
+  // }
 };
