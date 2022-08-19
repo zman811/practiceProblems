@@ -1,4 +1,4 @@
-class LinkedList:
+class Solution(object):
   def hasCycle(self, head):
     slow = fast = head
     while fast and fast.next:
