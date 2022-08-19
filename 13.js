@@ -43,6 +43,28 @@ Follow up: Can you solve it using O(1) (i.e. constant) memory?
  * @param {ListNode} head
  * @return {boolean}
  */
-var hasCycle = function(head) {
+var hasCycle = function (head) {
+  // we can use the tortise and the hare solution here
 
+  if (!head) {
+    return false;
+  }
+
+  let hare = head;
+  let tortoise = head;
+
+  while (hare) {
+    if (!hare.next) {
+      return false;
+    } else {
+      hare = hare.next.next; // this one is next.next since it is "moving faster"
+      tortoise = tortoise.next;
+    }
+
+    if (tortoise == hare) {
+      // Check to see if they ever overlap each other
+      return true;
+    }
+  }
+  return false;
 };
