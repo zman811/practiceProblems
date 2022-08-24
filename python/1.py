@@ -38,9 +38,15 @@
   # }
 
 class Solution(object):
-    def twoSum(self, nums, target):
+    def twoSum(nums, target):
         """
         :type nums: List[int]
         :type target: int
         :rtype: List[int]
         """
+        for id1, num in enumerate(nums):
+          for id2, num2 in enumerate(nums):
+            if num + num2 == target and id1 != id2:
+              return [id1, id2]
+
+    print(twoSum([3, 3], 6))
