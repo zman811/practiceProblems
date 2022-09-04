@@ -34,6 +34,12 @@
 
 # console.log('true', isPalindrome("A man, a plan, a canal: Panama"))
 # console.log('false', isPalindrome("race a car"))
+import re
 class Solution(object):
   def isPalindrome(s):
-    copy = s[:]
+    temp = s[::-1]
+    copy = re.sub(r'\W+', "", temp)
+    newS = re.sub(r'\W+', "", s)
+    return copy.lower() == newS.lower()
+  print(isPalindrome("race a car"))
+  print(isPalindrome("A man, a plan, a canal: Panama"))
