@@ -59,3 +59,10 @@ class Solution(object):
         :type q: TreeNode
         :rtype: TreeNode
         """
+        current = root
+        while ((root.val < p and root.val < q) or (current.val > p and current.val > q)):
+          if (p < current):
+            current = current.left
+          else:
+            current = current.right
+        return current
