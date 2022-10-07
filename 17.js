@@ -32,8 +32,8 @@ var letterCombinations = function (digits) {
         results.push(current);
         return;
       } else {
-        console.log(obj[digits[current.length]][i])
-        recurse((current += obj[digits[current.length]][i]));
+        //console.log(obj[digits[current.length]][i])
+        recurse((current + obj[digits[current.length]][i]));
       }
     }
   };
