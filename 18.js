@@ -25,6 +25,22 @@ ransomNote and magazine consist of lowercase English letters. */
  * @param {string} magazine
  * @return {boolean}
  */
- var canConstruct = function(ransomNote, magazine) {
-
+var canConstruct = function (ransomNote, magazine) {
+  // check through the ransomNote and remove the letter that matches in the magazine, if one is not found then stop
+  magazine = magazine.split('')
+  ransomNote = ransomNote.split('')
+  for (let i = 0; i < ransomNote.length; i++) {
+    console.log(magazine)
+    let index = magazine.indexOf(ransomNote[i]);
+    if (index === -1) {
+      return false;
+    } else {
+      magazine.splice(index, 1)
+    }
+  }
+  return true;
 };
+
+
+console.log('true', canConstruct('aa', 'aba'))
+console.log('false', canConstruct('aa', 'ba'))
