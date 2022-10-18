@@ -26,7 +26,19 @@ All the integers of nums are unique. */
 var permute = function(nums) {
   let solutions = [];
 
-  const recurse = () => {
-
+  const recurse = (current, used) => {
+    if(current.length === nums.length) {
+      solutions.push(current); // if we have a full solution push it to the res array and move on
+    } else {
+      for(let i = 0; i < nums.length; i++) {
+        if(used.indexOf(i) === -1) { // Check if we have used the idex already
+          recurse((current + (nums[i])), used + i); // add it to current
+        }
+      }
+    }
   }
+  recurse('', '');
+  return solutions;
 };
+
+console.log(permute([1,2,3]))
