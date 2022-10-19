@@ -27,13 +27,15 @@ class permutes(object):
         #       return [id1, id2]
         solutions = []
         def recurse(current, used):
-          if current.length == nums.length:
-            solutions.insert(current)
+          # print(len(current), len(nums))
+          if len(current) == len(nums):
+            solutions.append(current)
           else:
             for num in nums:
-              if used.indexOf(num) == -1:
-                recurse((current + num), num)
+              num = str(num)
+              if used.find(num) == -1:
+                recurse((current + num), (used + num))
         recurse('', '')
         return solutions
 
-    print(permute([3, 3]))
+    print(permute([1,2,3]))
